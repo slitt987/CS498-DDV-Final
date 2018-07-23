@@ -28,6 +28,10 @@ body {
     text-shadow: 1px 1px #06060d;
 }
 
+.essay {
+    margin-top: 15px;
+}
+
 .chart-container{
     padding: 10px;
     padding-bottom: 0px;
@@ -55,7 +59,6 @@ body {
 
 h2.subtitle {
     font-size: 0.8em;
-    padding-left: 10px;
     color: #ccc;
 }
 
@@ -125,7 +128,7 @@ path.domain {
 }
 
 .y .tick line {
-    stroke: # #536675;
+    stroke: #536675;
 }
 
 .toolTip {
