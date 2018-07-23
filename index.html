@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--
+<script src="https://d3js.org/d3.v4.min.js"></script>
+-->
+<script src="d3/d3.v4.min.js"></script>
+<script>
+    d3.selection.prototype.moveToFront = function() {
+        return this.each(function(){
+            this.parentNode.appendChild(this);
+        });
+    };
+</script>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shaun Litt - CS498-DDV Final project</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dark.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Dynamic Annotations in a Visualization Stepper</h1>
+        <h2 class="subtitle">Example of using jQuery to switch between annotations for different steps of a visualization</h2>
+        <div id="vis-nav" class="viz-nav-container" style="width: 500px">
+        </div>
+        <div id="vis-container">
+            <div id="scenes">
+                <div class="scene" id="scene1-content">
+                    <div class="widget">
+                        <div class="header">Browser Market Share</div>
+                        <div id="pie-chart" class="chart-container" style="width: 300px; height: 300px; padding-bottom: 10px"></div>
+                    </div>
+                </div>
+                <div class="scene" id="scene2-content">
+                    <div class="widget">
+                        <div class="header">Kickstarter Country Summary</div>
+                        <div id="country_summary" class="chart-container" style="width: 960px; height: 500px"></div>
+                        <div class="metric-container" id="country_summary-metric_select"></div>
+                    </div>
+                </div>
+                <div class="scene" id="scene3-content">
+                    <div class="widget">
+                        <div class="header">Kickstarter Category Summary</div>
+                        <div id="category_summary-filter_dropdown" class="dropdown-container"></div>
+                        <div id="category_summary" class="chart-container" style="width:960px; height:500px"></div>
+                        <div id="category_summary-metric_select" class="metric-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/stepper.js"></script>
+    <script src="js/pie_example.js"></script>
+    <script src="js/stacked_bar.js"></script>
+    <script src="js/data.js"></script>
+
+    <script>
+
+        let control = {
+            current_scene: "scene3",
+            rendered_scenes: [],
+            scene1: {
+                name: "1: Pie Example",
+                div_id: "pie-chart",
+                clear: clear_scene,
+                render: render_scene1
+            },
+            scene2: {
+                name: "2: Country Summary",
+                div_id: "country_summary",
+                clear: clear_scene,
+                render: render_stacked_bar
+            },
+            scene3: {
+                name: "3: Category Summary",
+                div_id: "category_summary",
+                clear: clear_scene,
+                render: render_stacked_bar
+            }
+        };
+        let data = {};
+
+        function init(error, pie_data, kd_data) {
+            // add data here
+            data["scene1"] = pie_data;
+            data["scene2"] = {
+                metric: "cnt",
+                metric_name: {
+                    cnt: "Projects",
+                    successful: "Suc. Projects",
+                    usd_pledged_real: "$ Pledged",
+                    usd_goal_real: "$ Goal"
+                },
+                annotations: [
+                    {
+                        key: "2012",
+                        text: ["Kickstarter slowly rolls", "out international"]
+                    },
+                    {
+                        key: "2015",
+                        text: ["The most projects", "launched in 2015"]
+                    }
+                ]
+            };
+            data["scene2"] = Object.assign(data["scene2"], pivot_data(["year", "country"], 20, "cnt", kd_data));
+
+            data["scene3"] = {
+                metric: "cnt",
+                filter: "*",
+                metric_name: {
+                    cnt: "Projects",
+                    successful: "Suc. Projects",
+                    usd_pledged_real: "$ Pledged",
+                    usd_goal_real: "$ Goal"
+                },
+                annotations: [
+                    {
+                        key: "2015",
+                        text: ["The most projects", "launched in 2015"]
+                    }
+                ]
+            };
+            data["scene3"] = Object.assign(data["scene3"], pivot_data(["year", "category", "country"], 999, "cnt", kd_data));
+
+            // Generate the menu
+            createMenu();
+            createNextLink();
+            switchScene(control.current_scene);
+        }
+
+        d3.queue()
+            .defer(d3.csv, "data/example.csv",
+                function(d) {
+                    return {
+                        name: d.name,
+                        percent: +d.percent
+                    }
+                })
+            .defer(d3.csv, "data/ks_country_summary.csv",
+                function(d) {
+                    return {
+                        year: +d.year_launched,
+                        country: d.country,
+                        category: d.main_category_group,
+                        state: d.state,
+                        cnt: +d.project_cnt,
+                        usd_pledged_real: +d.usd_pledged_real,
+                        usd_goal_real: +d.usd_goal_real,
+                        successful: +d.success_cnt
+                    }
+                })
+            .await(init);
+    </script>
+
+</body>
+
+</html>

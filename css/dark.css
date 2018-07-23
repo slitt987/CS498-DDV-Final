@@ -1,0 +1,140 @@
+body {
+    background-color: #1B1F2A;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    color: #dbdbdb;
+    height: 100%;
+}
+
+.widget {
+    background-color: #222D3A;
+    border-radius: 5px;
+    box-shadow: 0px 0px 1px 0px #06060d;
+    margin: 0 auto;
+    margin-top:25px;
+}
+
+.header{
+    background-color: #29384D;
+    height:40px;
+    color:#929DAF;
+    text-align: center;
+    line-height: 40px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    font-weight: 400;
+    font-size: 1.5em;
+    text-shadow: 1px 1px #06060d;
+}
+
+.chart-container{
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.viz-nav-container {
+    white-space: nowrap;
+}
+
+.metric-container{
+    white-space: nowrap;
+    margin-left: 30px;
+    height: 30px;
+}
+
+.shadow {
+    -webkit-filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.5) );
+    filter: drop-shadow( 0px 3px 3px rgba(0,0,0,.5) );
+}
+
+/* This is just to make things look a bit better */
+body {
+    font-size: 1.2em;
+}
+
+h2.subtitle {
+    font-size: 0.8em;
+    padding-left: 10px;
+    color: #ccc;
+}
+
+/* Basic styling for the step links */
+a.scene-link {
+    padding: 5px;
+    margin-right: 5px;
+    background-color: #444;
+    color: #666;
+    text-decoration: none;
+}
+
+a.scene-link:hover, a.active {
+    color: #ddd;
+}
+
+/* Basic styling for the step links */
+a.metric-link {
+    font-size: 0.5em;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: #444;
+    color: #666;
+    text-decoration: none;
+}
+
+a.metric-link:hover, a.active {
+    color: #ddd;
+}
+
+a.next-link {
+    padding: 5px;
+    margin-right: 5px;
+    background-color: #444;
+    color: #666;
+    text-decoration: none;
+}
+
+a.next-link:hover, a.active {
+    color: #ddd;
+}
+
+.dropdown-container {
+    margin-top: 7px;
+    margin-right: 5px;
+    font-size: 0.7em;
+    margin-left: 10px;
+}
+
+.scene {
+    position: absolute;
+    display: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #efefef;
+}
+
+.axis text {
+    fill: #cecece;
+}
+
+path.domain {
+    stroke: none;
+}
+
+.y .tick line {
+    stroke: # #536675;
+}
+
+.toolTip {
+    display: none;
+    min-width: 80px;
+    height: auto;
+    background: none repeat scroll 0 0 #a9a9a9;
+    border: 1px solid #232b7f;
+    padding: 14px;
+    text-align: center;
+}
+
