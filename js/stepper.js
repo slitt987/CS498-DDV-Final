@@ -9,38 +9,57 @@ function clear_scene(scene, div) {
     }
 }
 
-function vizMenuSetup(ds, div) {
+function apply_filter(ds) {
+    return ds.data
+        .filter(function(v) {
+            if ("filter" in ds) {
+                return !ds.filter_key
+                    .map(function (d,i) {
+                        return ds.filter[i] === v[d];
+                    })
+                    .includes(false);
+            } else {
+                return true;
+            }
+        });
+}
+
+function filterMenuSetup(ds, div) {
     // setup the dropdown toggles
     if (ds.filter_key.length > 0) {
-
         let dropdown = d3.select("#" + div + "-filter_dropdown");
         if (dropdown.selectAll("select").empty()) {
-            dropdown.text("Country - ");
-            dropdown.append("select")
-                .attr("id", div + "-filter_dropdown-select")
-                .selectAll("option")
-                .data(data[control.current_scene].filter_values)
-                .enter()
-                .append("option")
-                .attr("value", function (d) {
-                    return d;
-                })
-                .text(function (d) {
-                    return d;
-                });
+            ds.filter_key.forEach(function (f, i) {
+                let span = dropdown.append("span")
+                    .text(f.toProperCase() + " - ");
+                span.append("select")
+                    .attr("id", div + "-" + f + "-filter-select")
+                    .selectAll("option")
+                    .data(data[control.current_scene].filter_values[i])
+                    .enter()
+                    .append("option")
+                    .attr("value", function (d) {
+                        return d;
+                    })
+                    .text(function (d) {
+                        return d;
+                    });
 
-            dropdown.on("change", function () {
-                let id = control[control.current_scene].div_id + "-filter_dropdown-select";
-                let filter = document.getElementById(id).value;
-                data[control.current_scene].filter = filter;
-                let scene_control = control[control.current_scene];
-                let div = scene_control.div_id;
-                scene_control.clear(control.current_scene, div);
-                scene_control.render(data[control.current_scene], div);
-            });
+                span.on("change", function () {
+                    let id = control[control.current_scene].div_id + "-" + f + "-filter-select";
+                    let filter = document.getElementById(id).value;
+                    data[control.current_scene].filter[i] = filter;
+                    let scene_control = control[control.current_scene];
+                    let div = scene_control.div_id;
+                    scene_control.clear(control.current_scene, div);
+                    scene_control.render(data[control.current_scene], div);
+                });
+            })
         }
     }
+}
 
+function metricMenuSetup(ds, div) {
     // setup the metric toggles
     let toggles = d3.select("#" + div + "-metric_select");
     toggles.selectAll("a").remove();

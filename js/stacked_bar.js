@@ -128,14 +128,7 @@ function render_stacked_bar(ds, div) {
         .rangeRound([height, 0]);
     let z = d3.scaleOrdinal(d3.schemeCategory20);
 
-    let dataset = ds.data
-        .filter(function(v) {
-            if ("filter" in ds) {
-                return ds.filter === v[ds.filter_key[0]];
-            } else {
-                return true;
-            }
-        })
+    let dataset = apply_filter(ds)
         .map(function(v) {
             let r = {};
             r[ds.key] =  v[ds.key];
@@ -150,7 +143,8 @@ function render_stacked_bar(ds, div) {
     });
 
     // setup menus
-    vizMenuSetup(ds, div);
+    filterMenuSetup(ds, div);
+    metricMenuSetup(ds, div);
 
     // setup the dataset
     let keys = ds.sorted_keys;

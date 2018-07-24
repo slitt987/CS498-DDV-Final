@@ -9,6 +9,10 @@
             this.parentNode.appendChild(this);
         });
     };
+
+    String.prototype.toProperCase = function () {
+        return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    };
 </script>
 
 <html lang="en">
@@ -61,8 +65,8 @@
                     </div>
                 </div>
                 <div class="scene" id="scene6-content">
-                    <div id="summary" class="essay">
-                        summary
+                    <div id="conclusion" class="essay">
+                        conclusion
                     </div>
                 </div>
             </div>
@@ -71,6 +75,7 @@
 
     <script src="js/stepper.js"></script>
     <script src="js/stacked_bar.js"></script>
+    <script src="js/scatter.js"></script>
     <script src="js/data.js"></script>
 
     <script>
@@ -109,8 +114,8 @@
                 render: render_stacked_bar
             },
             scene6: {
-                name: "6: Summary",
-                div_id: "summary",
+                name: "6: Conclusion",
+                div_id: "conclusion",
                 clear: noop_clear,
                 render: noop_render
             }
@@ -118,7 +123,7 @@
         let data = {};
 
         function init(error, kd_data) {
-            // add data here
+            // Data prep for scenes
             data["scene2"] = {
                 metric: "cnt",
                 metric_name: {
@@ -138,11 +143,11 @@
                     }
                 ]
             };
-            data["scene2"] = Object.assign(data["scene2"], pivot_data(["year", "country"], 20, "cnt", kd_data));
+            data["scene2"] = Object.assign(data["scene2"], pivot_data(["year", "country"], 20, 2, "cnt", kd_data));
 
             data["scene5"] = {
                 metric: "cnt",
-                filter: "*",
+                filter: ["*"],
                 metric_name: {
                     cnt: "Projects",
                     successful: "Suc. Projects",
@@ -156,7 +161,30 @@
                     }
                 ]
             };
-            data["scene5"] = Object.assign(data["scene5"], pivot_data(["year", "category", "country"], 999, "cnt", kd_data));
+            data["scene5"] = Object.assign(data["scene5"], pivot_data(["year", "category", "country"], 999, 2, "cnt", kd_data));
+
+            data["scene3"] = {
+                metric: "cnt",
+                metric_name: {
+                    cnt: "Projects",
+                    usd_pledged_real: "$ Pledged",
+                    usd_goal_real: "$ Goal"
+                }
+            };
+            data["scene3"] = Object.assign(data["scene3"], pivot_data(["year", "state", "country"], 20, 3, "cnt", kd_data));
+
+            data["scene4"] = {
+                metric: "cnt",
+                metric_name: {
+                    cnt: "Projects",
+                    usd_pledged_real: "$ Pledged",
+                    usd_goal_real: "$ Goal"
+                }
+            };
+            data["scene4"] = Object.assign(data["scene3"], pivot_data(["year", "state", "category", "country"], 20, 3, "cnt", kd_data));
+            console.log(JSON.stringify(data["scene4"].data));
+            console.log(JSON.stringify(data["scene4"].filter_values));
+            console.log(JSON.stringify(data["scene4"].filter_key));
 
             // Generate the menu
             createMenu();

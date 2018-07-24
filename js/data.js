@@ -68,7 +68,7 @@ function sumarize_data(keys, sorted_keys, other_keys, metrics, data) {
 }
 
 
-function pivot_data(keys, max_keys, sort_metric, data) {
+function pivot_data(keys, max_keys, hier_depth, sort_metric, data) {
     let key_sort = {};
 
     // Organize the keys
@@ -100,20 +100,20 @@ function pivot_data(keys, max_keys, sort_metric, data) {
 
     let key_data = sumarize_data(keys, sorted_keys, other_keys, metrics, data);
     let summary_data = [];
-    let filter_values = ["*"];
-    if (keys.length > 2) {
-        summary_data = sumarize_data(keys.slice(0,2), sorted_keys, other_keys, metrics, data)
+    let filter_values = [];
+    if (keys.length > hier_depth) {
+        summary_data = sumarize_data(keys.slice(0,hier_depth), sorted_keys, other_keys, metrics, data)
             .map(function (d) {
                 let r = d;
-                r[keys[2]] = "*"
+                r[keys[keys.length - 1]] = "*"
                 return r;
             });
         key_values = summary_data.map(function (d) {
             return d[keys[0]];
         });
 
-        filter_values = filter_values.concat(d3.nest()
-            .key(function (d) {return d[keys[2]]})
+        filter_values = ["*"].concat(d3.nest()
+            .key(function (d) {return d[keys[keys.length - 1]]})
             .rollup(function(v) { return d3.mean(v, function(d) { return d[sort_metric]; }); })
             .entries(key_data)
             .map(function (d) {return d.key})
@@ -128,9 +128,9 @@ function pivot_data(keys, max_keys, sort_metric, data) {
 
     return {
         key: keys[0],
-        filter_key: keys.slice(2,99),
+        filter_key: keys.slice(hier_depth,99),
         sorted_keys: sorted_keys,
-        filter_values: filter_values,
+        filter_values: [filter_values],
         data: key_data,
         metrics: metrics
     };
