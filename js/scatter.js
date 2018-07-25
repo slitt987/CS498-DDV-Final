@@ -59,6 +59,24 @@ function render_scatter(ds, div) {
         .attr("fill", "#9f9f9f")
         .attr("opacity", .1);
 
+    g.append("text")
+        .attr("x", vizWidth / 10)
+        .attr("y", height / 8)
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 30)
+        .attr("fill", "#cecece")
+        .attr("opacity", .2)
+        .text("Winners");
+
+    g.append("text")
+        .attr("x", vizWidth - (vizWidth / 5))
+        .attr("y", height - height / 8)
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 30)
+        .attr("fill", "#cecece")
+        .attr("opacity", .2)
+        .text("Losers");
+
     g.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1a9f628-8b6c-470b-89b8-da309175070d" name="Default" comment="updated to support multiple filters">
+    <list default="true" id="d1a9f628-8b6c-470b-89b8-da309175070d" name="Default" comment="Updated data to change category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/scatter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scatter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/stacked_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/stacked_bar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +20,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="160">
               <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -34,8 +32,8 @@
       <file leaf-file-name="scatter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scatter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="61">
+              <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -302,7 +300,7 @@
       <workItem from="1531244921196" duration="45762000" />
       <workItem from="1532021566568" duration="51000" />
       <workItem from="1532022711546" duration="74171000" />
-      <workItem from="1532489381722" duration="2219000" />
+      <workItem from="1532489381722" duration="3284000" />
     </task>
     <task id="LOCAL-00001" summary="updated nav to final">
       <created>1532385958355</created>
@@ -325,17 +323,31 @@
       <option name="project" value="LOCAL" />
       <updated>1532488413894</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated to support multiple filters">
+      <created>1532491630033</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1532491630033</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated data to change category">
+      <created>1532492078442</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532492078442</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122203000" />
+    <option name="totallyTimeSpent" value="123268000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="781" height="900" extended-state="6" />
+    <frame x="0" y="0" width="887" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.41613317" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3664036" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -344,7 +356,7 @@
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.3042453" />
+      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.3042453" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -384,7 +396,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="updated nav to final" />
     <MESSAGE value="updated to support multiple filters" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated to support multiple filters" />
+    <MESSAGE value="Updated data to change category" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated data to change category" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -616,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/scatter_example/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="61" column="23" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
@@ -632,14 +638,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scatter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="61">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/scatter_example/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="61" column="23" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
+        <state relative-caret-position="160">
           <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
