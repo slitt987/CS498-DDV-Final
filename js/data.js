@@ -1,3 +1,41 @@
+function apply_filter(ds) {
+    let dataset = [];
+
+    if ("filter" in ds && ds.filter.length > 0) {
+        dataset = ds.data
+            .filter(function(v) {
+                return !ds.filter_key
+                    .map(function (d,i) {
+                        return ds.filter[i] === "*" || ds.filter[i].toString() === v[d].toString();
+                    })
+                    .includes(false);
+            });
+    } else {
+        dataset = ds.data;
+    }
+
+    dataset = sumarize_data(
+        [ds.key, ds.metric_key],
+        ds.sorted_keys,
+        ds.other_keys,
+        ds.metrics,
+        dataset
+    )
+
+    return dataset.map(function(v) {
+        let r = {};
+        r[ds.key] = v[ds.key];
+        ds.sorted_keys.forEach(function(k) {
+            if (ds.metric.startsWith("avg_")) {
+                r[k] = v[k][ds.metric] / v[k].cnt;
+            } else {
+                r[k] = v[k][ds.metric];
+            }
+        });
+        return r;
+    });
+}
+
 function sumarize_data(keys, sorted_keys, other_keys, metrics, data) {
     // first lets remove the "other" keys
     let key_data = data.map(function(d) {
@@ -64,11 +102,12 @@ function sumarize_data(keys, sorted_keys, other_keys, metrics, data) {
                 });
             return r;
         });
+
     return key_data;
 }
 
 
-function pivot_data(keys, max_keys, hier_depth, sort_metric, data) {
+function configure_data(keys, max_keys, hier_depth, sort_metric, data) {
     let key_sort = {};
 
     // Organize the keys
@@ -98,40 +137,33 @@ function pivot_data(keys, max_keys, hier_depth, sort_metric, data) {
     let metrics = Object.keys(data[0])
         .filter(function(d) {return !keys.includes(d)});
 
-    let key_data = sumarize_data(keys, sorted_keys, other_keys, metrics, data);
-    let summary_data = [];
-    let filter_values = [];
-    if (keys.length > hier_depth) {
-        summary_data = sumarize_data(keys.slice(0,hier_depth), sorted_keys, other_keys, metrics, data)
-            .map(function (d) {
-                let r = d;
-                r[keys[keys.length - 1]] = "*"
-                return r;
-            });
-        key_values = summary_data.map(function (d) {
-            return d[keys[0]];
-        });
-
-        filter_values = ["*"].concat(d3.nest()
-            .key(function (d) {return d[keys[keys.length - 1]]})
+    let filter_key = keys.slice(hier_depth,99);
+    let filter_values = filter_key.map(function (k) {
+        return ["*"].concat(d3.nest()
+            .key(function (d) {return d[k]})
             .rollup(function(v) { return d3.mean(v, function(d) { return d[sort_metric]; }); })
-            .entries(key_data)
-            .map(function (d) {return d.key})
-        )
-    } else {
-        key_values = key_data.map(function (d) {
-            return d[keys[0]];
-        });
-    }
+            .entries(data)
+            .sort(function (a, b) {
+                if (keys[keys.length - 1] === "year") {
+                    return +b.key - +a.key;
+                } else {
+                    return +b.value - +a.value
+                }
+            })
+            .map(function (d) {return d.key}));
+    });
 
-    key_data = key_data.concat(summary_data);
+    let filter = filter_key.map(function(d) {return "*"});
 
     return {
         key: keys[0],
-        filter_key: keys.slice(hier_depth,99),
+        metric_key: keys[1],
+        filter_key: filter_key,
+        filter: filter,
         sorted_keys: sorted_keys,
-        filter_values: [filter_values],
-        data: key_data,
+        other_keys: other_keys,
+        filter_values: filter_values,
+        data: data,
         metrics: metrics
     };
 }

@@ -128,15 +128,7 @@ function render_stacked_bar(ds, div) {
         .rangeRound([height, 0]);
     let z = d3.scaleOrdinal(d3.schemeCategory20);
 
-    let dataset = apply_filter(ds)
-        .map(function(v) {
-            let r = {};
-            r[ds.key] =  v[ds.key];
-            ds.sorted_keys.forEach(function(k) {
-                r[k] = v[k][ds.metric];
-        });
-        return r;
-    });
+    let dataset = apply_filter(ds);
 
     data[control.current_scene].key_values = dataset.map(function (d) {
         return d[ds.key]

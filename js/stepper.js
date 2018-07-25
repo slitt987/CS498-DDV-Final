@@ -9,19 +9,11 @@ function clear_scene(scene, div) {
     }
 }
 
-function apply_filter(ds) {
-    return ds.data
-        .filter(function(v) {
-            if ("filter" in ds) {
-                return !ds.filter_key
-                    .map(function (d,i) {
-                        return ds.filter[i] === v[d];
-                    })
-                    .includes(false);
-            } else {
-                return true;
-            }
-        });
+function renderScene() {
+    let scene_control = control[control.current_scene];
+    let div = scene_control.div_id;
+    scene_control.clear(control.current_scene, div);
+    scene_control.render(data[control.current_scene], div);
 }
 
 function filterMenuSetup(ds, div) {
@@ -31,7 +23,9 @@ function filterMenuSetup(ds, div) {
         if (dropdown.selectAll("select").empty()) {
             ds.filter_key.forEach(function (f, i) {
                 let span = dropdown.append("span")
-                    .text(f.toProperCase() + " - ");
+                    .text(f.toProperCase() + " - ")
+                    .style("padding-left", "10px")
+                    .style("padding-right", "10px");
                 span.append("select")
                     .attr("id", div + "-" + f + "-filter-select")
                     .selectAll("option")
@@ -46,13 +40,10 @@ function filterMenuSetup(ds, div) {
                     });
 
                 span.on("change", function () {
-                    let id = control[control.current_scene].div_id + "-" + f + "-filter-select";
+                    let id = div + "-" + f + "-filter-select";
                     let filter = document.getElementById(id).value;
                     data[control.current_scene].filter[i] = filter;
-                    let scene_control = control[control.current_scene];
-                    let div = scene_control.div_id;
-                    scene_control.clear(control.current_scene, div);
-                    scene_control.render(data[control.current_scene], div);
+                    renderScene()
                 });
             })
         }
@@ -76,11 +67,8 @@ function metricMenuSetup(ds, div) {
                 .classed("active", m === ds.metric)
                 .on("click", function (d) {
                     let clickedMetric = d3.select(this).attr("id");
-                    let scene_control = control[control.current_scene];
-                    let div = scene_control.div_id;
                     data[control.current_scene].metric = clickedMetric;
-                    scene_control.clear(control.current_scene, div);
-                    scene_control.render(data[control.current_scene], div);
+                    renderScene()
                 })
         });
 }

@@ -38,22 +38,25 @@
                 <div class="scene" id="scene2-content">
                     <div class="widget">
                         <div class="header">Kickstarter Country Summary</div>
+                        <div id="country_summary-filter_dropdown" class="dropdown-container"></div>
                         <div id="country_summary" class="chart-container" style="width: 960px; height: 500px"></div>
-                        <div class="metric-container" id="country_summary-metric_select"></div>
+                        <div id="country_summary-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene3-content">
                     <div class="widget">
                         <div class="header">Kickstarter Country Success</div>
+                        <div id="country_success-filter_dropdown" class="dropdown-container"></div>
                         <div id="country_success" class="chart-container" style="width: 960px; height: 500px"></div>
-                        <div class="metric-container" id="country_success-metric_select"></div>
+                        <div id="country_success-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene4-content">
                     <div class="widget">
                         <div class="header">Kickstarter Category Success</div>
+                        <div id="category_success-filter_dropdown" class="dropdown-container"></div>
                         <div id="category_success" class="chart-container" style="width: 960px; height: 500px"></div>
-                        <div class="metric-container" id="category_success-metric_select"></div>
+                        <div id="category_success-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene5-content">
@@ -81,7 +84,7 @@
     <script>
 
         let control = {
-            current_scene: "scene1",
+            current_scene: "scene3",
             rendered_scenes: [],
             scene1: {
                 name: "1: Intro",
@@ -98,14 +101,14 @@
             scene3: {
                 name: "3: Country Success",
                 div_id: "country_success",
-                clear: noop_clear,
-                render: noop_render
+                clear: clear_scene,
+                render: render_scatter
             },
             scene4: {
                 name: "4: Category Success",
                 div_id: "category_success",
-                clear: noop_clear,
-                render: noop_render
+                clear: clear_scene,
+                render: render_scatter
             },
             scene5: {
                 name: "5: Category Summary",
@@ -143,11 +146,10 @@
                     }
                 ]
             };
-            data["scene2"] = Object.assign(data["scene2"], pivot_data(["year", "country"], 20, 2, "cnt", kd_data));
+            data["scene2"] = Object.assign(data["scene2"], configure_data(["year", "country", "state"], 20, 2, "cnt", kd_data));
 
             data["scene5"] = {
                 metric: "cnt",
-                filter: ["*"],
                 metric_name: {
                     cnt: "Projects",
                     successful: "Suc. Projects",
@@ -161,30 +163,27 @@
                     }
                 ]
             };
-            data["scene5"] = Object.assign(data["scene5"], pivot_data(["year", "category", "country"], 999, 2, "cnt", kd_data));
+            data["scene5"] = Object.assign(data["scene5"], configure_data(["year", "category", "country", "state"], 20, 2, "cnt", kd_data));
 
             data["scene3"] = {
                 metric: "cnt",
                 metric_name: {
-                    cnt: "Projects",
+                    cnt: "Count",
                     usd_pledged_real: "$ Pledged",
                     usd_goal_real: "$ Goal"
                 }
             };
-            data["scene3"] = Object.assign(data["scene3"], pivot_data(["year", "state", "country"], 20, 3, "cnt", kd_data));
+            data["scene3"] = Object.assign(data["scene3"], configure_data(["country", "state", "year"], 999, 2, "cnt", kd_data));
 
             data["scene4"] = {
                 metric: "cnt",
                 metric_name: {
-                    cnt: "Projects",
+                    cnt: "Count",
                     usd_pledged_real: "$ Pledged",
                     usd_goal_real: "$ Goal"
                 }
             };
-            data["scene4"] = Object.assign(data["scene3"], pivot_data(["year", "state", "category", "country"], 20, 3, "cnt", kd_data));
-            console.log(JSON.stringify(data["scene4"].data));
-            console.log(JSON.stringify(data["scene4"].filter_values));
-            console.log(JSON.stringify(data["scene4"].filter_key));
+            data["scene4"] = Object.assign(data["scene4"], configure_data(["category", "state", "year", "country"], 999, 2, "cnt", kd_data));
 
             // Generate the menu
             createMenu();
