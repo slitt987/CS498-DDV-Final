@@ -144,7 +144,7 @@ function configure_data(keys, max_keys, hier_depth, sort_metric, data) {
             .rollup(function(v) { return d3.mean(v, function(d) { return d[sort_metric]; }); })
             .entries(data)
             .sort(function (a, b) {
-                if (keys[keys.length - 1] === "year") {
+                if (k === "year") {
                     return +b.key - +a.key;
                 } else {
                     return +b.value - +a.value
