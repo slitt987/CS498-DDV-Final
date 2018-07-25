@@ -171,10 +171,11 @@ function render_stacked_bar(ds, div) {
                 .select("text")
                 .selectAll("tspan")
                 .data([d.key, round(value, 2) + " " + ds.metric_name[ds.metric]]);
+
             tspan.enter().append("tspan").merge(tspan)
                 .text(function(d) {return d})
-                .attr("dy", function(d, i) {return (i * .9 + 1.12) + "em"})
-                .attr("x", 45);
+                .attr("dy", function(d, i) { return ( i === 0)?"1.4em":"1.7em"})
+                .attr("x", +tooltip.select("rect").attr("width") / 2);
         })
         .selectAll("rect")
         .data(function(d) { return d; })
@@ -214,8 +215,8 @@ function render_stacked_bar(ds, div) {
     var legend = g.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 10)
-        .attr("text-anchor", "end")
         .attr("fill", "#cecece")
+        .attr("text-anchor", "end")
         .selectAll("g")
         .data(keys.slice().reverse())
         .enter().append("g")
