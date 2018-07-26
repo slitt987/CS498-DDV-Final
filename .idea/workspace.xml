@@ -4,7 +4,6 @@
     <list default="true" id="d1a9f628-8b6c-470b-89b8-da309175070d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/scatter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scatter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/stacked_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/stacked_bar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="scatter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/scatter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+            <state relative-caret-position="778">
+              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -42,7 +41,7 @@
       <file leaf-file-name="stacked_bar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
+            <state relative-caret-position="482">
               <caret line="135" column="12" selection-start-line="135" selection-start-column="12" selection-end-line="135" selection-end-column="68" />
             </state>
           </provider>
@@ -127,7 +126,6 @@
       <find>sep</find>
       <find>pivot_data</find>
       <find>data</find>
-      <find>console</find>
       <find>extent</find>
       <find>prefix</find>
       <find>filter</find>
@@ -136,6 +134,7 @@
       <find>xAxis</find>
       <find>xAx</find>
       <find>tooltip</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -182,7 +181,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="718" />
     <option name="height" value="900" />
   </component>
@@ -289,7 +288,7 @@
       <workItem from="1531244921196" duration="45762000" />
       <workItem from="1532021566568" duration="51000" />
       <workItem from="1532022711546" duration="74171000" />
-      <workItem from="1532489381722" duration="5820000" />
+      <workItem from="1532489381722" duration="7562000" />
     </task>
     <task id="LOCAL-00001" summary="updated nav to final">
       <created>1532385958355</created>
@@ -354,17 +353,24 @@
       <option name="project" value="LOCAL" />
       <updated>1532612220222</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix position">
+      <created>1532612421551</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1532612421551</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125804000" />
+    <option name="totallyTimeSpent" value="127546000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="945" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.34391534" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19345239" />
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -373,7 +379,7 @@
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.3042453" />
+      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.18587896" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -417,7 +423,8 @@
     <MESSAGE value="fix the year filter sort" />
     <MESSAGE value="add filter on category, fix tooltip" />
     <MESSAGE value="added no data for selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added no data for selection" />
+    <MESSAGE value="fix position" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix position" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -668,15 +675,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
+        <state relative-caret-position="482">
           <caret line="135" column="12" selection-start-line="135" selection-start-column="12" selection-end-line="135" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scatter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+        <state relative-caret-position="778">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
         </state>
       </provider>
     </entry>

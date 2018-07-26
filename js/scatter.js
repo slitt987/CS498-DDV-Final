@@ -4,16 +4,6 @@ function render_scatter(ds, div) {
     let height = parseInt(d3.selectAll("#" + div).style("height").replace('px', '')) - margin.top - margin.bottom;
     let vizWidth = width - margin.legend_buffer;
 
-    let x = d3.scaleLog()
-        .range([0, vizWidth]);
-
-    let y = d3.scaleLog()
-        .range([height, 0]);
-
-    let color = d3.scaleOrdinal(d3.schemeCategory20);
-    let xAxis = d3.axisBottom(x).ticks(null, ".2s");
-    let yAxis = d3.axisLeft(y).ticks(null, ".2s");
-
     let svg = d3.select("#" + div).append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -67,8 +57,27 @@ function render_scatter(ds, div) {
     filterMenuSetup(ds, div);
     metricMenuSetup(ds, div);
 
-    x.domain(d3.extent(dataset, function(d) { return d.failed; })).nice();
-    y.domain(d3.extent(dataset, function(d) { return d.successful; })).nice();
+    let range = d3.extent(
+        d3.extent(dataset, function(d) { return d.failed; })
+            .concat(d3.extent(dataset, function(d) { return d.successful; }))
+    );
+
+    let x = {}, y = {};
+
+    if (range[1] < 1000) {
+        x = d3.scaleLinear().range([0, vizWidth]);
+        y = d3.scaleLinear().range([height, 0]);
+    } else {
+        x = d3.scaleLog().range([0, vizWidth]);
+        y = d3.scaleLog().range([height, 0]);
+    }
+
+    let color = d3.scaleOrdinal(d3.schemeCategory20);
+    let xAxis = d3.axisBottom(x).ticks(null, ".2s");
+    let yAxis = d3.axisLeft(y).ticks(null, ".2s");
+
+    x.domain(range).nice();
+    y.domain(range).nice();
 
     g.append("polygon")
         .attr("points", vizWidth + "," + height + " 0," + height + " " + vizWidth + ",0")
@@ -121,7 +130,7 @@ function render_scatter(ds, div) {
         .attr("class", "dot")
         .attr("r", 5)
         .attr("cx", 0)
-        .attr("cy", function(d) { return y(d.successful); })
+        .attr("cy", function(d) { return d.successful === 0? height : y(d.successful); })
         .style("fill", function(d) { return color(d[ds.key]); })
         .on("mouseenter", function() { tooltip.style("display", null); })
         .on("mouseleave", function() { tooltip.style("display", "none"); })
@@ -149,7 +158,7 @@ function render_scatter(ds, div) {
         .delay(function (d, i) {
             return i * 50;
         })
-        .attr("cx", function(d) { return x(d.failed); });
+        .attr("cx", function(d) { return d.failed === 0 ? 0: x(d.failed); });
 
     let legend = g.selectAll(".legend")
         .data(color.domain())
