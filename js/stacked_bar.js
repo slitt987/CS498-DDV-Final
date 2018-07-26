@@ -130,6 +130,22 @@ function render_stacked_bar(ds, div) {
 
     let dataset = apply_filter(ds);
 
+    if (dataset.length === 0) {
+        svg.append("text")
+            .style("text-anchor", "middle")
+            .attr("x", width / 2)
+            .attr("dy", height / 2)
+            .attr("font-size", "40px")
+            .attr("font-weight", "bold")
+            .attr("fill", "#7a7a7a")
+            .text("No Data For Selection")
+            .style("opacity", 0)
+            .transition()
+            .duration(1000)
+            .style("opacity", 1);
+        return false;
+    }
+
     data[control.current_scene].key_values = dataset.map(function (d) {
         return d[ds.key]
     });
