@@ -133,7 +133,7 @@ function render_stacked_bar(ds, div) {
     if (dataset.length === 0) {
         svg.append("text")
             .style("text-anchor", "middle")
-            .attr("x", width / 2)
+            .attr("x", width / 2 + (margin.left - margin.right) / 2)
             .attr("dy", height / 2)
             .attr("font-size", "40px")
             .attr("font-weight", "bold")
