@@ -160,7 +160,7 @@ function render_stacked_bar(ds, div) {
         .on("mouseleave", function() { tooltip.style("display", "none"); })
         .on("mousemove", function(d) {
             let xPosition = d3.mouse(this)[0] - 5;
-            let yPosition = d3.mouse(this)[1] - 15;
+            let yPosition = d3.mouse(this)[1] - 1;
             let elements = document.querySelectorAll(':hover');
             element = elements[elements.length - 1].__data__;
             value = element[1] - element[0];

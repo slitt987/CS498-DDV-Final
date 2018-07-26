@@ -107,7 +107,7 @@ function sumarize_data(keys, sorted_keys, other_keys, metrics, data) {
 }
 
 
-function configure_data(keys, max_keys, hier_depth, sort_metric, data) {
+function configure_data(keys, max_keys, filter_cat, sort_metric, data) {
     let key_sort = {};
 
     // Organize the keys
@@ -137,7 +137,11 @@ function configure_data(keys, max_keys, hier_depth, sort_metric, data) {
     let metrics = Object.keys(data[0])
         .filter(function(d) {return !keys.includes(d)});
 
-    let filter_key = keys.slice(hier_depth,99);
+    let filter_key = keys.slice(2,99);
+    if (filter_cat) {
+        filter_key.push(keys[1]);
+    }
+
     let filter_values = filter_key.map(function (k) {
         return ["*"].concat(d3.nest()
             .key(function (d) {return d[k]})

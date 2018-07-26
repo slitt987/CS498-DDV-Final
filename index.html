@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
 <script src="https://d3js.org/d3.v4.min.js"></script>
--->
-<script src="d3/d3.v4.min.js"></script>
 <script>
     d3.selection.prototype.moveToFront = function() {
         return this.each(function(){
@@ -146,7 +143,7 @@
                     }
                 ]
             };
-            data["scene2"] = Object.assign(data["scene2"], configure_data(["year", "country", "state"], 20, 2, "cnt", kd_data));
+            data["scene2"] = Object.assign(data["scene2"], configure_data(["year", "country", "state"], 20, true, "cnt", kd_data));
 
             data["scene5"] = {
                 metric: "cnt",
@@ -163,7 +160,7 @@
                     }
                 ]
             };
-            data["scene5"] = Object.assign(data["scene5"], configure_data(["year", "category", "country", "state"], 20, 2, "cnt", kd_data));
+            data["scene5"] = Object.assign(data["scene5"], configure_data(["year", "category", "country", "state"], 20, true, "cnt", kd_data));
 
             data["scene3"] = {
                 metric: "cnt",
@@ -173,7 +170,7 @@
                     usd_goal_real: "$ Goal"
                 }
             };
-            data["scene3"] = Object.assign(data["scene3"], configure_data(["country", "state", "year"], 999, 2, "cnt", kd_data));
+            data["scene3"] = Object.assign(data["scene3"], configure_data(["country", "state", "year"], 999, false, "cnt", kd_data));
 
             data["scene4"] = {
                 metric: "cnt",
@@ -183,7 +180,7 @@
                     usd_goal_real: "$ Goal"
                 }
             };
-            data["scene4"] = Object.assign(data["scene4"], configure_data(["category", "state", "year", "country"], 999, 2, "cnt", kd_data));
+            data["scene4"] = Object.assign(data["scene4"], configure_data(["category", "state", "year", "country"], 999, false, "cnt", kd_data));
 
             // Generate the menu
             createMenu();
