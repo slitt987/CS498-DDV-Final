@@ -91,16 +91,17 @@ function render_scatter(ds, div) {
         .attr("font-size", 30)
         .attr("fill", "#cecece")
         .attr("opacity", .2)
-        .text("Winners");
+        .text("Likely To Succeed");
 
     g.append("text")
-        .attr("x", vizWidth - (vizWidth / 5))
+        .attr("x", vizWidth - (vizWidth / 10))
         .attr("y", height - height / 8)
+        .style("text-anchor", "end")
         .attr("font-family", "sans-serif")
         .attr("font-size", 30)
         .attr("fill", "#cecece")
         .attr("opacity", .2)
-        .text("Losers");
+        .text("Likely To Fail");
 
     g.append("g")
         .attr("class", "x axis")
