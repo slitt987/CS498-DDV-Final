@@ -3,8 +3,24 @@ body {
     width: 100%;
     font-family: 'Roboto', sans-serif;
     margin-left: 20px;
-    color: #dbdbdb;
+    color: #ddd;
     height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #ddd;
+}
+
+a:visited {
+    color: #a7a7a7;
+}
+
+p {
+    font-size: .8em
 }
 
 .widget {
@@ -35,16 +51,11 @@ body {
 .chart-container{
     padding: 10px;
     padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .viz-nav-container {
     white-space: nowrap;
-}
-
-.metric-container{
-    white-space: nowrap;
-    margin-left: 30px;
-    height: 30px;
 }
 
 .shadow {
@@ -59,7 +70,7 @@ body {
 
 h2.subtitle {
     font-size: 0.8em;
-    color: #ccc;
+    color: #ddd;
 }
 
 /* Basic styling for the step links */
@@ -108,6 +119,13 @@ a.next-link:hover, a.active {
     margin-left: 10px;
 }
 
+.metric-container{
+    white-space: nowrap;
+    margin-top: 0px;
+    margin-left: 30px;
+    height: 30px;
+}
+
 .scene {
     position: absolute;
     display: none;
@@ -116,11 +134,11 @@ a.next-link:hover, a.active {
 .axis path,
 .axis line {
     fill: none;
-    stroke: #efefef;
+    stroke: #ddd;
 }
 
 .axis text {
-    fill: #cecece;
+    fill: #ddd;
 }
 
 path.domain {
@@ -141,3 +159,83 @@ path.domain {
     text-align: center;
 }
 
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 10px 16px;
+    background-color: #3b3b46;
+    font-size: 15px;
+    height: 18px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #3b3b46;
+    color: #ddd;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #4a4a4a;
+    margin: 150px auto;
+    padding: 0px;
+    font-size: .7em;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 600px;
+    overflow: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+.modal-content, ul {
+    font-size: .7em;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    padding-right: 5px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0px; opacity: 1}
+}
+
+.summary {
+    height: 70px;
+    width: 900px;
+}

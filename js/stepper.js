@@ -1,6 +1,12 @@
 function noop_clear(scene, div) {}
 function noop_render(d, div) {}
 
+// When the user clicks on <div>, open the popup
+function popupEssay() {
+    var popup = document.getElementById("popupEssay");
+    popup.classList.toggle("show");
+}
+
 function clear_scene(scene, div) {
     d3.select("#" + div).select("#" + div + "-svg").remove()
     let index = control.rendered_scenes.indexOf(scene);

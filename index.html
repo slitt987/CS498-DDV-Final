@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<!--
 <script src="https://d3js.org/d3.v4.min.js"></script>
+-->
+<script src="d3/d3.v4.min.js"></script>
 <script>
+    // helper methods to enhance base classes
     d3.selection.prototype.moveToFront = function() {
         return this.each(function(){
             this.parentNode.appendChild(this);
@@ -16,12 +20,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Shaun Litt - CS498-DDV Final project</title>
+    <meta name="author" content="Shaun Litt">
+    <meta name="description" content="">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/dark.css">
 </head>
 <body>
     <div id="container">
-        <h1>Kickstarter Project Analysis</h1>
+        <h1 style="margin-bottom: 10px">Kickstarter Project Analysis</h1>
         <h2 class="subtitle">An analysis of kickstarter projects to help identify the winning formula</h2>
         <div id="vis-nav" class="viz-nav-container" style="width: 500px">
         </div>
@@ -29,48 +35,200 @@
             <div id="scenes">
                 <div class="scene" id="scene1-content">
                     <div id="intro" class="essay">
-                        Intro
+                        <p>
+                            Kickstarter is a crowd funding platform that has gained a lot of popularity over the past few
+                            years supporting over 300,000 projects in over 20 countries.  In the next few slides we will try
+                            to identify what are the characteristics of a successful Kickstarter project in case you find
+                            yourself looking to either launch a project or become a backer.
+                        </p>
+                        <p>
+                            As you work your way through these slides please make sure to take time to view the different
+                            dimensional filters available to you and look through the different metrics as they tell surprisingly
+                            different stories.
+                        </p>
+                        <!-- Trigger/Open The Modal -->
+                        <a href="#" class="metric-link active" id="about-modal-button" style="font-size: .8em;">About this visualization</a>
                     </div>
                 </div>
                 <div class="scene" id="scene2-content">
+                    <div class="summary">
+                        <p>
+                            Here we see the performance of Kickstarter projects around the world.  As you can see international
+                            country roll-out was slow (seemingly as they added international currency support first and then
+                            later added support for more languages).  Additionally we can see that 2015 was the biggest year
+                            for Kickstarter before decline.  That said make sure to look through the different metrics as
+                            the decline is very different as we look things like project success and dollars pledged.
+                        </p>
+                    </div>
                     <div class="widget">
                         <div class="header">Kickstarter Country Summary</div>
                         <div id="country_summary-filter_dropdown" class="dropdown-container"></div>
-                        <div id="country_summary" class="chart-container" style="width: 960px; height: 500px"></div>
+                        <div id="country_summary" class="chart-container" style="width: 960px; height: 480px"></div>
                         <div id="country_summary-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene3-content">
+                    <div class="summary">
+                        <p>
+                            Now we will investigate how these metrics compare for successful vs unsuccessful projects for
+                            each country.  The further the country is from the inflection line the more or less likely similar
+                            projects would be to succeed.
+                        </p>
+                        <p>
+                            NOTE: To make this data a bit easier to seperate given the giant
+                            skew in the data I have adjusted the axis to be logarithmic when entries with large values are
+                            selected.
+                        </p>
+                    </div>
                     <div class="widget">
                         <div class="header">Kickstarter Country Success</div>
                         <div id="country_success-filter_dropdown" class="dropdown-container"></div>
-                        <div id="country_success" class="chart-container" style="width: 960px; height: 500px"></div>
+                        <div id="country_success" class="chart-container" style="width: 960px; height: 480px"></div>
                         <div id="country_success-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene4-content">
+                    <div class="summary">
+                        <p>
+                            Here we will look at the data to compare successful vs unsuccessful projects again, but this
+                            time broken out by category instead of country.  Perhaps different categories perform better?
+                            Perhaps this changes by country (presented as a filter)?
+                        </p>
+                        <p>
+                            NOTE: To make this data a bit easier to seperate given the giant
+                            skew in the data I have adjusted the axis to be logarithmic when entries with large values are
+                            selected.
+                        </p>
+                    </div>
                     <div class="widget">
                         <div class="header">Kickstarter Category Success</div>
                         <div id="category_success-filter_dropdown" class="dropdown-container"></div>
-                        <div id="category_success" class="chart-container" style="width: 960px; height: 500px"></div>
+                        <div id="category_success" class="chart-container" style="width: 960px; height: 480px"></div>
                         <div id="category_success-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene5-content">
+                    <div class="summary">
+                        <p>
+                            Last we will re-review general performance on Kickstarter using everything reviewed thus far
+                            and re-analyzing the data based on category.
+                        </p>
+                    </div>
                     <div class="widget">
                         <div class="header">Kickstarter Category Summary</div>
                         <div id="category_summary-filter_dropdown" class="dropdown-container"></div>
-                        <div id="category_summary" class="chart-container" style="width:960px; height:500px"></div>
+                        <div id="category_summary" class="chart-container" style="width:960px; height:480px"></div>
                         <div id="category_summary-metric_select" class="metric-container"></div>
                     </div>
                 </div>
                 <div class="scene" id="scene6-content">
                     <div id="conclusion" class="essay">
-                        conclusion
+                        <p>
+                            I hope that these visualizations have afforded you more insights into what the state is of Projects
+                            launched on Kickstarter.  Hopefully you spent time reviewing a variety of selections of the data
+                            specifically reviewing some of the details about successful and unsuccessful project.
+                        </p>
+                        <p>
+                            That said I think it is fair to say that anyone looking to launch a Kickstarter project is definitely
+                            facing an uphill battle, perhaps that is why the number of projects launched in the past few
+                            years has declined and the goal of those projects also seems to be decreasing.  That said, even
+                            though the number of projects launched is on a decline, we can see that backer spending is declining
+                            much more slowly, which would let us imply that backers are investing more on projects that they
+                            are investing in (since there are less of them).  That said <b>the success rate of projects seems
+                            to have remained steady around 40%</b>.  We can also see that some categories are clearly performing
+                            better in certain geographies, though these are not the categories that one may think of, nor
+                            do these appear to be consistent predictors.
+                        </p>
+                        <p>
+                            Hopefully these trends means that the projects that do launch on Kickstarter will continue to increase
+                            in quality to earn their backers money.
+                        </p>
+                        <p>
+                            Continue to investigate more:
+                        </p>
+                        <ul style="margin-top: 0px">
+                            <li>Source Code: <a href="https://github.com/slitt987/cs498ddv_final">Github</a></li>
+                            <li>Raw Data: <a href="https://github.com/slitt987/cs498ddv_final/blob/master/data/ks_country_summary.csv">ks_country_summary.csv</a></li>
+                        </ul>
+                        <p>I hope that you have gained insights from this presentation and thanks!</p>
+                        <!-- Trigger/Open The Modal -->
+                        <a href="#" class="metric-link active" id="about-modal-button-conclusion" style="font-size: .8em;">About this visualization</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="about-modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" id="about-modal-close">&times;</span>
+            <div class="modal-header">
+                About This Presentation
+            </div>
+            <div class="modal-body">
+                <p>This visualization was developed for the UIUC CS498 Data Visualization course as part of the MCS-DS program.</p>
+                <ul>
+                    <li>Term: Summer 2018</li>
+                    <li>Author: Shaun Litt</li>
+                    <li>Source Code: <a href="https://github.com/slitt987/cs498ddv_final">https://github.com/slitt987/cs498ddv_final</a></li>
+                    <li>Instructor: John C. Hart</li>
+                    <li>Reference Visualization</li>
+                    <ul style="margin-top: 0px">
+                        <li>Scatter Plot: <a href="https://bl.ocks.org/mbostock/3887118">https://bl.ocks.org/mbostock/3887118</a></li>
+                        <li>Stacked Bar Chart: <a href="https://bl.ocks.org/mbostock/3886208">https://bl.ocks.org/mbostock/3886208</a></li>
+                        <li>Tooltip: <a href="https://bl.ocks.org/mjfoster83/7c9bdfd714ab2f2e39dd5c09057a55a0">https://bl.ocks.org/mjfoster83/7c9bdfd714ab2f2e39dd5c09057a55a0</a></li>
+                        <li>Slides/Nav: <a href="http://vallandingham.me/stepper_steps.html">http://vallandingham.me/stepper_steps.html</a></li>
+                        <li>Dark Theme: <a href="http://www.adeveloperdiary.com/d3-js/create-a-simple-donut-chart-using-d3-js/">http://www.adeveloperdiary.com/d3-js/create-a-simple-donut-chart-using-d3-js/</a></li>
+                        <li>Modal: <a href="https://www.w3schools.com/howto/howto_css_modals.asp">https://www.w3schools.com/howto/howto_css_modals.asp</a></li>
+                        <li>Data: <a href="https://www.kaggle.com/kemical/kickstarter-projects">https://www.kaggle.com/kemical/kickstarter-projects</a></li>
+                    </ul>
+                </ul>
+                <p>
+                    This visualization utilizes an interactive slideshow layout to help identify characteristics
+                    of successful Kickstarter Projects.  All visualizations and navigation are implemented
+                    in pure JavaScript and use only the D3 Library.  Data was pre-processed to consolidate
+                    the data files and to aggregate the data to a Year, Main Category, Country, Project State
+                    grain (done using Tableau Prep) and stored as a simple CSV file.
+                </p>
+                <p>
+                    Visualizations are presented in two groups.  First data is presented broken down by Country
+                    to see if the geography of where a project is launched affects the project performance.
+                    Then I present the data broken down by Main Category.  While analyzing the data by category
+                    country is still presented as a filter to allow for insights gained in the first slides
+                    to help navigate the data to finer points in the subsequent slides.  All visualize allow for
+                    additional filters including in the stacked bar charts the categorical data of the stacks.
+                </p>
+                <p>
+                    Additionally, each chart supports selecting the metric demonstrated on the visualization
+                    via a series of toggles at the bottom of the chart.   Also of note, stacked bar charts are
+                    limited to 20 categorical elements grouping all remaining elements into an "Other" bucket,
+                    and scatter plots switch between linear and logrithmic scale depending on the range of the
+                    data due to extreme skew (such as the US as a country) in the data.
+                </p>
+                <p>
+                    There are 3 main annotations provided in the visualizations.  First in the stacked bar
+                    charts I highlight years of importance to the data.  Then in the scatter plots I afford
+                    the user a divider demonstrating the inflection point between successful and failed projects
+                    for the selected metric.  Lastly all charts include tooltips to display numeric values
+                    that may be hard to gather exactly from the visual and animations to introduce intrigue and
+                    suspense.
+                </p>
+                <p>
+                    The presentation is configured to first investigate geography by showing general performance
+                    over time (stacked bar chart) and then comparing successful to unsuccessful projects (scatter
+                    plot).  Then I ask the user to consider if categories matter, but to maintain the flow I actually
+                    reverse the order of the presentation to be the comparison first and then general performance over
+                    time after.
+                </p>
+                <p>
+                    Enjoy!
+                </p>
+            </div>
+        </div>
+
     </div>
 
     <script src="js/stepper.js"></script>
@@ -80,6 +238,7 @@
 
     <script>
 
+        // configure all the scenes
         let control = {
             current_scene: "scene1",
             rendered_scenes: [],
@@ -120,8 +279,53 @@
                 render: noop_render
             }
         };
-        let data = {};
 
+        // Setup the modal
+
+        // Get the modal components
+        let modal = document.getElementById('about-modal');
+        let span = document.getElementById("about-modal-close");
+
+        // When the user clicks on the button, open the modal
+        document.getElementById("about-modal-button").onclick = function() {
+            modal.style.display = "block";
+        };
+
+        document.getElementById("about-modal-button-conclusion").onclick = function() {
+            modal.style.display = "block";
+        };
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // read the data
+        let data = {};
+        d3.queue()
+            .defer(d3.csv, "data/ks_country_summary.csv",
+                function(d) {
+                    return {
+                        year: +d.year_launched,
+                        country: d.country,
+                        category: d.main_category,
+                        state: d.state,
+                        cnt: +d.project_cnt,
+                        usd_pledged_real: +d.usd_pledged_real,
+                        usd_goal_real: +d.usd_goal_real,
+                        successful: +d.success_cnt
+                    }
+                })
+            .await(init);
+
+        // callback once data is loaded (initializes data structures and visualizations)
         function init(error, kd_data) {
             // Data prep for scenes
             data["scene2"] = {
@@ -187,22 +391,6 @@
             createNextLink();
             switchScene(control.current_scene);
         }
-
-        d3.queue()
-            .defer(d3.csv, "data/ks_country_summary.csv",
-                function(d) {
-                    return {
-                        year: +d.year_launched,
-                        country: d.country,
-                        category: d.main_category,
-                        state: d.state,
-                        cnt: +d.project_cnt,
-                        usd_pledged_real: +d.usd_pledged_real,
-                        usd_goal_real: +d.usd_goal_real,
-                        successful: +d.success_cnt
-                    }
-                })
-            .await(init);
     </script>
 
 </body>
