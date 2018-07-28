@@ -46,12 +46,15 @@ p {
 
 .essay {
     margin-top: 15px;
+    width: 960px;
 }
 
 .chart-container{
     padding: 10px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    width: 960px;
+    height: 480px;
 }
 
 .viz-nav-container {
@@ -237,5 +240,5 @@ path.domain {
 
 .summary {
     height: 70px;
-    width: 900px;
+    width: 960px;
 }
