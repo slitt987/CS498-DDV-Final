@@ -50,11 +50,6 @@ p {
     text-shadow: 1px 1px #06060d;
 }
 
-.essay {
-    margin-top: 15px;
-    width: 940px;
-}
-
 .chart-container{
     padding: 10px;
     padding-bottom: 0px;
@@ -145,7 +140,7 @@ a.metric-link:hover, a.active {
 .axis path,
 .axis line {
     fill: none;
-    stroke: #ddd;
+    stroke: #536675;
 }
 
 .axis text {
@@ -247,6 +242,13 @@ path.domain {
 }
 
 .summary {
-    height: 70px;
+    height: 35px;
     width: 940px;
+    font-size: 14px;
+}
+
+.essay {
+    margin-top: 15px;
+    width: 940px;
+    font-size: 14px;
 }

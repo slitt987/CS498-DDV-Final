@@ -165,21 +165,21 @@ function render_scatter(ds, div) {
         .data(color.domain())
         .enter().append("g")
         .attr("class", "legend")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+        .attr("font-size", 8)
+        .attr("transform", function(d, i) { return "translate(0," + i * 17 + ")"; });
 
     legend.append("rect")
         .attr("x", width - 10)
         .attr("width", 10)
-        .attr("height", 18)
+        .attr("height", 16)
         .style("fill", color);
 
     legend.append("text")
         .attr("font-family", "sans-serif")
-        .attr("font-size", 10)
         .attr("fill", "#cecece")
         .attr("x", width - 16)
-        .attr("y", 9)
-        .attr("dy", ".35em")
+        .attr("y", 7)
+        .attr("dy", "0.32em")
         .style("text-anchor", "end")
         .text(function(d) { return d; });
 

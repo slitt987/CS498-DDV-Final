@@ -93,12 +93,12 @@ function render_stacked_bar(ds, div) {
 
     let svg = d3.select("#" + div).append("svg")
         .attr("width", width)
-        .attr("height", height)
+        .attr("height", height + margin.top + margin.bottom)
         .attr("class", "shadow")
         .attr("id", div + "-svg");
 
     width = width - margin.left - margin.right;
-    height = height - margin.top - margin.bottom;
+    height = height - margin.bottom;
     let g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // setup the tooltip
@@ -230,23 +230,23 @@ function render_stacked_bar(ds, div) {
     // Setup the legend
     var legend = g.append("g")
         .attr("font-family", "sans-serif")
-        .attr("font-size", 10)
+        .attr("font-size", 8)
         .attr("fill", "#cecece")
         .attr("text-anchor", "end")
         .selectAll("g")
         .data(keys.slice().reverse())
         .enter().append("g")
-        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+        .attr("transform", function(d, i) { return "translate(0," + i * 17 + ")"; });
 
     legend.append("rect")
         .attr("x", width - 10)
         .attr("width", 10)
-        .attr("height", 19)
+        .attr("height", 16)
         .attr("fill", z);
 
     legend.append("text")
         .attr("x", width - 15)
-        .attr("y", 9.5)
+        .attr("y", 7)
         .attr("dy", "0.32em")
         .text(function(d) { return d; });
 }
