@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d1a9f628-8b6c-470b-89b8-da309175070d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/scatter.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scatter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/stacked_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/stacked_bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+            <state relative-caret-position="300">
+              <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -35,28 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stacked_bar.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scatter.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scatter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1895">
-              <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dark.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/dark.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2183">
+            <state relative-caret-position="550">
               <caret line="244" column="14" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
             </state>
           </provider>
@@ -130,10 +110,10 @@
         <option value="$PROJECT_DIR$/js/pie_example.js" />
         <option value="$PROJECT_DIR$/js/data.js" />
         <option value="$PROJECT_DIR$/js/stepper.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/scatter.js" />
         <option value="$PROJECT_DIR$/css/dark.css" />
+        <option value="$PROJECT_DIR$/js/scatter.js" />
         <option value="$PROJECT_DIR$/js/stacked_bar.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -268,7 +248,7 @@
       <workItem from="1532021566568" duration="51000" />
       <workItem from="1532022711546" duration="74171000" />
       <workItem from="1532489381722" duration="22677000" />
-      <workItem from="1532818751935" duration="3932000" />
+      <workItem from="1532818751935" duration="5137000" />
     </task>
     <task id="LOCAL-00001" summary="updated nav to final">
       <created>1532385958355</created>
@@ -396,11 +376,25 @@
       <option name="project" value="LOCAL" />
       <updated>1532838818320</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix margins, font sizes, layout">
+      <created>1532840897040</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1532840897040</updated>
+    </task>
+    <task id="LOCAL-00020" summary="One more margin fix">
+      <created>1532841666221</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1532841666221</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146593000" />
+    <option name="totallyTimeSpent" value="147798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -467,7 +461,9 @@
     <MESSAGE value="use public d3" />
     <MESSAGE value="Update to essay and some minor resizing to better fit the monitor" />
     <MESSAGE value="Center the page and shrink the nav (to maintain width)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Center the page and shrink the nav (to maintain width)" />
+    <MESSAGE value="fix margins, font sizes, layout" />
+    <MESSAGE value="One more margin fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="One more margin fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -732,17 +728,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/dark.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="244" column="14" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/scatter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1895">
-          <caret line="167" column="29" selection-start-line="167" selection-start-column="29" selection-end-line="167" selection-end-column="29" />
+        <state relative-caret-position="15">
+          <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="89" column="76" selection-start-line="89" selection-start-column="76" selection-end-line="89" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="23" column="7" lean-forward="true" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        <state relative-caret-position="300">
+          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -750,20 +760,6 @@
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#5;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#5;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/dark.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2183">
-          <caret line="244" column="14" selection-start-line="244" selection-start-column="14" selection-end-line="244" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/stacked_bar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
         </state>
       </provider>
     </entry>
