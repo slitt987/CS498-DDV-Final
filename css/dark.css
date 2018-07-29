@@ -2,7 +2,6 @@ body {
     background-color: #1B1F2A;
     width: 100%;
     font-family: 'Roboto', sans-serif;
-    margin-left: 20px;
     color: #ddd;
     height: 100%;
 }
@@ -21,6 +20,13 @@ a:visited {
 
 p {
     font-size: .8em
+}
+
+.content {
+    width: 960px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .widget {
@@ -80,12 +86,26 @@ h2.subtitle {
 a.scene-link {
     padding: 5px;
     margin-right: 5px;
+    font-size: 0.8em;
+    background-color: #444;
+    color: #666;
+    text-decoration: none;
+}
+
+a.next-link {
+    padding: 5px;
+    margin-right: 5px;
+    font-size: 0.8em;
     background-color: #444;
     color: #666;
     text-decoration: none;
 }
 
 a.scene-link:hover, a.active {
+    color: #ddd;
+}
+
+a.next-link:hover, a.active {
     color: #ddd;
 }
 
@@ -100,18 +120,6 @@ a.metric-link {
 }
 
 a.metric-link:hover, a.active {
-    color: #ddd;
-}
-
-a.next-link {
-    padding: 5px;
-    margin-right: 5px;
-    background-color: #444;
-    color: #666;
-    text-decoration: none;
-}
-
-a.next-link:hover, a.active {
     color: #ddd;
 }
 
