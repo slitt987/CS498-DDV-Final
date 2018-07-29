@@ -87,18 +87,18 @@ function stacked_bar_annotate () {
 }
 
 function render_stacked_bar(ds, div) {
-    let margin = {top: 40, right: 0, bottom: 17, left: 40};
-    let width = parseInt(d3.selectAll("#" + div).style("width").replace('px', '')) - margin.left - margin.right;
-    let height = parseInt(d3.selectAll("#" + div).style("height").replace('px', '')) - margin.top - margin.bottom;
+    let margin = {top: 40, right: 5, bottom: 30, left: 40, legend_buffer: 90};
+    let width = parseInt(d3.selectAll("#" + div).style("width").replace('px', ''));
+    let height = parseInt(d3.selectAll("#" + div).style("height").replace('px', ''));
 
     let svg = d3.select("#" + div).append("svg")
         .attr("width", width)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("height", height)
         .attr("class", "shadow")
         .attr("id", div + "-svg");
 
     width = width - margin.left - margin.right;
-    height = height - margin.bottom;
+    height = height - margin.top - margin.bottom;
     let g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // setup the tooltip
@@ -121,7 +121,7 @@ function render_stacked_bar(ds, div) {
 
     // set scales
     let x = d3.scaleBand()
-        .rangeRound([0, width - 123])
+        .rangeRound([0, width - margin.legend_buffer])
         .paddingInner(0.05)
         .align(0.1);
     let y = d3.scaleLinear()
@@ -230,7 +230,7 @@ function render_stacked_bar(ds, div) {
     // Setup the legend
     var legend = g.append("g")
         .attr("font-family", "sans-serif")
-        .attr("font-size", 8)
+        .attr("font-size", 10)
         .attr("fill", "#cecece")
         .attr("text-anchor", "end")
         .selectAll("g")

@@ -1,5 +1,5 @@
 function render_scatter(ds, div) {
-    let margin = {top: 40, right: 0, bottom: 40, left: 60, legend_buffer: 100};
+    let margin = {top: 40, right: 5, bottom: 30, left: 40, legend_buffer: 90};
     let width = parseInt(d3.selectAll("#" + div).style("width").replace('px', '')) - margin.left - margin.right;
     let height = parseInt(d3.selectAll("#" + div).style("height").replace('px', '')) - margin.top - margin.bottom;
     let vizWidth = width - margin.legend_buffer;
@@ -165,7 +165,7 @@ function render_scatter(ds, div) {
         .data(color.domain())
         .enter().append("g")
         .attr("class", "legend")
-        .attr("font-size", 8)
+        .attr("font-size", 10)
         .attr("transform", function(d, i) { return "translate(0," + i * 17 + ")"; });
 
     legend.append("rect")
