@@ -46,15 +46,15 @@ p {
 
 .essay {
     margin-top: 15px;
-    width: 960px;
+    width: 940px;
 }
 
 .chart-container{
     padding: 10px;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    width: 960px;
-    height: 480px;
+    width: 940px;
+    height: 460px;
 }
 
 .viz-nav-container {
@@ -200,12 +200,12 @@ path.domain {
 .modal-content {
     position: relative;
     background-color: #4a4a4a;
-    margin: 150px auto;
+    margin: 100px auto;
     padding: 0px;
     font-size: .7em;
     border: 1px solid #888;
     border-radius: 5px;
-    width: 600px;
+    width: 700px;
     overflow: scroll;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
@@ -240,5 +240,5 @@ path.domain {
 
 .summary {
     height: 70px;
-    width: 960px;
+    width: 940px;
 }
